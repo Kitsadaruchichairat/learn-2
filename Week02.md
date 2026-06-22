@@ -538,3 +538,51 @@ TLS 1.3
 | 404  | ไม่พบข้อมูล        | URL/ID      |
 | 409  | ข้อมูลซ้ำ          | Register    |
 | 500  | Server Error       | Bug         |
+
+
+# SSL/TLS Handshake
+
+>SSL/TLS Handshake คือกระบวนการที่ Client และ Server ตกลงวิธีสื่อสารแบบปลอดภัยก่อนส่งข้อมูลจริง
+
+>เป้าหมาย:
+- ยืนยันตัวตน Server
+- แลกเปลี่ยน Key
+- สร้างช่องทางเข้ารหัส
+
+![HandShake](https://images.ctfassets.net/slt3lc6tev37/5aYOr5erfyNBq20X5djTco/3c859532c91f25d961b2884bf521c1eb/tls-ssl-handshake.png)
+>Flow:
+```
+Client
+ |
+ | 1. Client Hello
+ | - ส่ง TLS Version
+ | - ส่ง Encryption ที่รองรับ
+ |
+ v
+
+Server
+ |
+ | 2. Server Hello
+ | - เลือก Algorithm
+ | - ส่ง Certificate
+ |
+ v
+
+Client
+ |
+ | 3. ตรวจสอบ Certificate
+ | - ตรวจว่า Certificate ถูกต้อง
+ | - ตรวจ CA
+ |
+ v
+
+Client + Server
+
+สร้าง Shared Key
+
+↓
+
+เริ่มส่งข้อมูลแบบ Encrypt
+
+```
+

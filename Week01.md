@@ -378,3 +378,87 @@ docker network connect <network_name> <container_name/id>
 docker network disconnect <network_name> <container_name/id>
 ```
 - หยุดเชื่อมต่อ container จาก network
+
+
+> # เพิ่มเติม
+
+>### Git checkout กับ switch แตกต่างกันยังไง
+
+> git checkout = คำสั่งเก่า ทำหลายอย่าง มีการ เปลี่ยน branch, สร้าง branch,ย้าย commit , restore file 
+
+> git switch = คำสั่งใหม่ ใช้เปลี่ยน branch โดยเฉพาะ
+
+>###  แยกแยะให้ได้ว่าcommand ไหนทํางานบนเครื่องเรา ทําบนoffline และทําบน online ของgit
+
+>#### 1. Command ที่ทำงานบนเครื่องเรา (Local / Offline)
+
+
+> ##### พวกนี้ ไม่ต้องใช้อินเทอร์เน็ต
+>- git status = ดูว่าไฟล์ไหนเปลี่ยน 
+
+>- git log = ดู commit ที่มีในเครื่อง
+
+>- git diff = ดูความต่างของไฟล์
+
+>- git branch = ดู branch ในเครื่อง
+
+>- git switch dev = เปลี่ยน branch ในเครื่อง
+
+>- git switch -c feature/login = สร้าง branch ใหม่ในเครื่อง
+
+>- git add . = ย้ายไฟล์เข้า Staging
+
+>- git commit -m "add login" = บันทึกลง Local Repository
+
+
+>#### 2. Command ที่ทำงานกับ Remote (Online)
+
+>ต้องต่อ Internet
+
+
+>- git fetch = คือ เอาข้อมูลมาเก็บในเครื่อง แต่ยังไม่เปลี่ยนไฟล์
+
+>- git pull = ดึงจาก GitHub แล้วรวมเข้า branch เรา
+
+>- git push = ส่ง commit ของเราไป GitHub
+
+>#### 3.  Command ที่ใช้ได้ทั้งสองฝั่ง
+
+>- git clone URL =  ครั้งแรก ต้องใช้ Internet แต่หลังจากโหลดแล้ว ทำงาน offline ได้
+
+>- git remote -v = ดูว่าเชื่อม GitHub ไหน
+
+> ### Git Life Cycle (กระบวนการทำงานของ Git)
+
+```
+แก้ไขไฟล์
+   |
+   v
+Working Directory
+(ไฟล์ที่กำลังแก้)
+   |
+   | git add
+   v
+Staging Area
+(เตรียมไฟล์ที่จะบันทึก)
+   |
+   | git commit
+   v
+Local Repository
+(เก็บประวัติในเครื่อง)
+   |
+   | git push
+   v
+Remote Repository
+(GitHub / GitLab)
+```
+
+>### Git ref log กับlog ต่างกันยังไง
+
+```
+git log
+= ดูประวัติ "commit"
+
+git reflog
+= ดูประวัติ "การขยับของ HEAD / branch ในเครื่อง"
+```
