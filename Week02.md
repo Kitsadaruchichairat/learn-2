@@ -539,6 +539,15 @@ TLS 1.3
 | 409  | ข้อมูลซ้ำ          | Register    |
 | 500  | Server Error       | Bug         |
 
+>#### ที่มาของ HTTP Status Code
+
+>HTTP Status Code ถูกออกแบบมาตั้งแต่ยุคแรกของ HTTP Protocol โดยองค์กร W3C (World Wide Web Consortium) และมาตรฐานปัจจุบันดูแลโดย IETF (Internet Engineering Task Force) ผ่านเอกสารมาตรฐาน RFC
+
+>เป้าหมายคือ
+
+>- ให้ Client และ Server สื่อสารผลลัพธ์กันด้วยรูปแบบเดียวกัน
+>- ไม่ต้องส่งข้อความยาว ๆ
+>- ให้ระบบต่าง ๆ เข้าใจตรงกัน
 
 # SSL/TLS Handshake
 

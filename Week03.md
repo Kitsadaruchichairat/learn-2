@@ -1067,7 +1067,7 @@ GET /users/10/orders
 >### Authentication ใน REST API
 >นิยม JWT
 
-># เปรียบเทียบการเขียน code แบบ synchronous กับ asynchronous
+># เปรียบเทียบการเขียน code แบบ Synchronous กับ Asynchronous
 
 >### Synchronous (Sync) คืออะไร?
 
