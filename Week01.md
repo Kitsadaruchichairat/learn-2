@@ -462,3 +462,37 @@ git log
 git reflog
 = ดูประวัติ "การขยับของ HEAD / branch ในเครื่อง"
 ```
+
+
+> ### Conventional Commit Messages (รูปแบบการเขียน Git commit message ให้เป็นมาตรฐาน)
+
+> รูปแบบ commit 
+```
+git commit -m "<type>(<scope>): <description>"
+```
+
+>ตัวอย่าง
+```
+git commit -m "feat(login): add login page"
+```
+>ความหมาย
+>-  feat = เพิ่มความสามารถใหม่
+>- login = ส่วนที่แก้ (scope)
+>- add login page = สิ่งที่ทำ
+
+>Type ที่ใช้บ่อย
+
+| Type       | ใช้เมื่อ                                      | ตัวอย่าง                           |
+| ---------- | --------------------------------------------- | ---------------------------------- |
+| `feat`     | เพิ่ม feature ใหม่                            | `feat(auth): add login page`       |
+| `fix`      | แก้ bug / แก้ปัญหา                            | `fix(api): handle error response`  |
+| `docs`     | แก้เอกสาร README / comment                    | `docs: update installation guide`  |
+| `style`    | format code, spacing, lint (ไม่เปลี่ยน logic) | `style: format eslint rules`       |
+| `refactor` | ปรับโครงสร้าง code/folder ไม่เปลี่ยนผลลัพธ์          | `refactor: move components folder` |
+| `test`     | เพิ่ม/แก้ test                                | `test: add login test case`        |
+| `chore`    | งานทั่วไป config, gitignore, project setup    | `chore: initial project setup`     |
+| `ci`       | CI/CD เช่น GitHub Actions, GitLab CI          | `ci: add deploy pipeline`          |
+| `build`    | build system, dependency, Docker, package     | `build: update docker image`       |
+| `perf`     | ปรับ performance                              | `perf: optimize api request`       |
+| `revert`   | ย้อน commit ก่อนหน้า                          | `revert: revert login change`      |
+

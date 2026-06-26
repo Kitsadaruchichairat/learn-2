@@ -1234,3 +1234,65 @@ Thread 3
 >- Lock
 >- Mutex
 >- Semaphore
+
+
+
+# เพิ่มเติม 
+
+## Nonce คืออะไร
+>Nonce ย่อมาจาก Number used once คือ ค่าที่ถูกสร้างขึ้นมาเพื่อใช้เพียงครั้งเดียว (One-Time Value) แล้วไม่ควรนำกลับมาใช้ซ้ำ
+
+> ### จุดประสงค์หลักคือ
+>- ป้องกันการโจมตีแบบ Replay Attack
+>- เพิ่มความปลอดภัยในการเข้ารหัส (Encryption)
+>- ยืนยันว่าคำขอนี้เป็นคำขอใหม่จริง
+
+> ### ทำไมต้องมี Nonce?
+>สมมติ Login ด้วย 
+``` 
+Username: Kit
+
+Password: 123456
+```
+>หาก Hacker ดักข้อมูลได้ อาจส่งข้อมูลเดิมซ้ำ Server อาจคิดว่าเป็นผู้ใช้จริง เรียกว่า
+
+>Replay Attack คือการนำข้อมูลที่เคยส่งมาแล้ว ส่งซ้ำอีกครั้ง
+
+>### Nonce ช่วยอย่างไร?
+>Server จะสร้าง Nonce แล้ว ส่งให้ Client และ Client ส่งกลับพร้อมข้อมูล สุดท้าย Server ตรวจสอบ Nonce ถูกต้องไหม เคยใช้แล้วหรือยัง ถ้าเคยใช้แล้ว Reject ทันที
+
+>### คุณสมบัติของ Nonce
+>- สุ่ม 
+>- ใช้ครั้งเดียว 
+>- คาดเดาได้ยาก
+>- หมดอายุเร็ว
+
+>### Nonce ใช้ที่ไหนบ้าง?
+
+>#### 1.Cryptography
+>เช่น
+>- AES-GCM
+>- ChaCha20-Poly1305
+
+>Nonce จะถูกใช้ร่วมกับ Key แม้จะเป็นข้อมูลเดิม แต่ถ้า Nonce ต่างกัน Ciphertext จะต่างกัน
+
+>#### 2. JWT 
+>JWT ปกติไม่มี Nonce แต่ระบบ Authentication บางระบบ จะมี Nonce เช่น
+>- OAuth 2.0
+>- OpenID Connect (OIDC)
+
+>#### 3. CSP (Content Security Policy)
+
+>เวลาเว็บโหลด Script Server อาจสร้าง Nonce Browser จะรันเฉพาะ Script ที่มี Nonce ตรงกัน ช่วยป้องกัน XSS (Cross-Site Scripting)
+
+>#### 4.  Blockchain 
+>Nonce คือค่าที่ Miner เปลี่ยนไปเรื่อย ๆ จนได้ Hash ที่ตรงตามเงื่อนไข ถ้าไม่ตรง เปลี่ยน Nonce ใหม่ แล้ว Hash ใหม่
+
+>#### Nonce ต่างจาก Salt อย่างไร?
+
+| หัวข้อ       | Nonce                                     | Salt                  |
+| ------------ | ----------------------------------------- | --------------------- |
+| ใช้กับ       | Encryption / Authentication               | Password Hash         |
+| จุดประสงค์   | ป้องกัน Replay และทำให้ Ciphertext ไม่ซ้ำ | ป้องกัน Rainbow Table |
+| ใช้ซ้ำได้ไหม | ไม่ควรใช้ซ้ำ                              | เก็บคู่กับ Hash ได้   |
+| สุ่มหรือไม่  | สุ่ม                                      | สุ่ม                  |
